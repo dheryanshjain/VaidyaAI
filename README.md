@@ -21,7 +21,7 @@ The interface is built using Gradio, making it easy to run locally and test quic
 - Medical image analysis using a Groq vision model
 - Doctor-style conversational response generation
 - Text-to-speech output using gTTS
-- Optional ElevenLabs integration
+- ElevenLabs integration
 - Local web UI with Gradio
 
 ## Tech Stack
@@ -32,7 +32,6 @@ The interface is built using Gradio, making it easy to run locally and test quic
 - Groq API
 - gTTS
 - SpeechRecognition
-- pydub
 - Python Dotenv
 
 ### Supporting Libraries
@@ -42,7 +41,7 @@ The interface is built using Gradio, making it easy to run locally and test quic
 - Pandas
 - Requests
 - Uvicorn
-- ElevenLabs (optional)
+- ElevenLabs
 
 ### AI / ML Components
 - Whisper Large V3 for speech transcription
@@ -98,78 +97,8 @@ Output
   - Converts the doctor's final text into speech
   - Uses gTTS by default and includes ElevenLabs code paths
 
-## Project Structure
 
-```text
-VaidyaAI/
-├── Pipfile
-├── Pipfile.lock
-├── requirements.txt
-├── README.md
-├── gradio_app.py
-├── brain_of_the_doctor.py
-├── voice_of_the_patient.py
-├── voice_of_the_doctor.py
-├── final.mp3
-├── acne.jpg
-├── dandruff-optimized.webp
-├── skin_rash.jpg
-├── tounge.jpg
-├── __pycache__/
-└── .gitignore
-```
 
-## Prerequisites
-
-- Python 3.10+
-- Access to the Groq API
-- Optional: ElevenLabs API key for alternative voice synthesis
-- Microphone access for local voice capture
-
-## Setup
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/dheryanshjain/VaidyaAI.git
-cd VaidyaAI
-```
-
-2. Create a virtual environment
-
-```bash
-python -m venv .venv
-source .venv/bin/activate   # Linux / macOS
-# or .venv\Scripts\activate  # Windows
-```
-
-3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Configure environment variables
-
-Create a `.env` file in the project root:
-
-```env
-GROQ_API_KEY=your_groq_api_key
-ELEVENLABS_API_KEY=your_elevenlabs_api_key
-```
-
-5. Run the app
-
-```bash
-cd VaidyaAI
-python gradio_app.py
-```
-
-Then open the local Gradio URL shown in the terminal, usually:
-
-```text
-http://localhost:7860
-```
 
 ## Usage
 
@@ -186,17 +115,8 @@ http://localhost:7860
 - AI analyzes the combination of symptoms and image.
 - Doctor-like response is generated and spoken aloud.
 
-## Notes
 
-This repository is a prototype and should be treated as an educational/demo project rather than a clinical diagnostic system. It is useful for experimentation with multimodal AI workflows, but it is not intended to replace professional medical judgment.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Contributing
-
-Contributions, feature ideas, and improvements are welcome. For major changes, please open an issue first to discuss the proposed update.
 
 ## Acknowledgements
 
