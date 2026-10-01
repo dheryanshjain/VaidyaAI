@@ -1,0 +1,4 @@
+gradio>=5.20,<6
+groq==0.15.0
+gtts==2.5.4
+python-dotenv==1.0.1
