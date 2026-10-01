@@ -50,41 +50,26 @@ VaidyaAI/
 
 ## How the Workflow Works
 
-1. The patient records a voice question in the Gradio interface and may upload a medical image.
-2. If audio is provided, `voice_of_the_patient.py` sends it to Groq Whisper and returns the transcription.
-3. `gradio_app.py` detects whether the text is English, Hindi, or Hinglish using Devanagari character ratios and common Hinglish words.
-4. The app builds a language-specific medical assistant prompt with safety and response-format rules.
-5. If an image is provided, `brain_of_the_doctor.py` Base64-encodes it and sends it with the patient query to the Groq vision-language model.
-6. If no image is provided, the app returns a predefined response asking for more symptom details and highlighting urgent warning signs.
-7. Markdown markers are removed from the model response.
-8. `voice_of_the_doctor.py` converts the response into Hindi or English speech and saves it as `doctor_response.mp3`.
-9. The UI displays the transcription, written response, and playable doctor voice response.
+1. The patient records a voice question in Gradio and may upload a medical image.
+2. The app transcribes the audio, detects the language, and prepares a safe response prompt.
+3. The Groq vision model analyzes the image when provided; otherwise, the app uses a safety-focused fallback.
+4. The UI displays the written response and plays the Hindi or English voice response.
 
 ## System Architecture
 
 ```mermaid
 flowchart LR
-    User[Patient] --> UI[Gradio Web UI]
-    UI --> Audio[Voice Input]
-    UI --> Image[Optional Medical Image]
-
-    Audio --> STT[Groq Whisper\nwhisper-large-v3]
-      STT --> Workflow[Application Workflow - gradio_app.py]
-    Image --> Encoder[Base64 Image Encoder]
-    Encoder --> Workflow
-
-    Workflow --> Language[Language Detection\nEnglish / Hindi / Hinglish]
-    Language --> Prompt[Language-Specific Medical Prompt]
-    Prompt --> Vision[Groq Vision-Language Model\nqwen/qwen3.8-27b]
-    Image --> Vision
-    Workflow -->|No image| Fallback[Safety-Oriented Fallback Response]
-    Vision --> Response[Cleaned Text Response]
+    Patient[Patient] --> UI[Gradio Web UI]
+    UI --> Input[Voice question<br/>Optional medical image]
+    Input --> Processing[Application workflow<br/>Transcription and language detection]
+    Processing -->|Image provided| Vision[Groq vision model]
+    Processing -->|No image| Fallback[Safety fallback response]
+    Vision --> Response[Patient-friendly text response]
     Fallback --> Response
-
-    Response --> TTS[gTTS\nHindi or English]
+    Response --> Voice[gTTS voice response]
     Response --> UI
-    TTS --> UI
-    UI --> User
+    Voice --> UI
+    UI --> Patient
 ```
 
 
