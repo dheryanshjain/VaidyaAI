@@ -1,6 +1,6 @@
 # VaidyaAI
 
-VaidyaAI is an AI-powered medical assistant that lets patients ask questions using their voice and optionally provide a medical image. It transcribes the patient's speech, detects the response language, analyzes the image when available, and returns a concise text and voice response.
+VaidyaAI is an AI-powered medical assistant with voice and vision that lets patients ask questions using their voice and optionally provide a medical image. It transcribes the patient's speech, detects the response language, analyzes the image when available, and returns a concise text and voice response.
 
 > VaidyaAI is an informational assistant, not a replacement for a qualified medical professional. It does not provide definitive diagnoses or prescribe medication dosages.
 
@@ -12,16 +12,10 @@ The project also demonstrates how speech recognition, multimodal AI, language de
 
 ## Features
 
-- Voice-based patient input through a microphone.
-- Speech transcription using Groq Whisper (`whisper-large-v3`).
-- Optional medical image upload for visual analysis.
-- Vision-language analysis using Groq's `qwen/qwen3.8-27b` model.
-- Automatic detection of English, Hindi, and Hinglish input.
-- Language-specific, patient-friendly response prompts.
-- Text response organized as assessment, possible cause, next steps, precautions, and when to seek care.
-- Hindi or English voice output using Google Text-to-Speech.
-- Gradio interface with separate patient input and doctor response areas.
-- Safe response guidance: no definitive diagnosis, invented findings, or medication dosage recommendations.
+- STT (Speech-to-Text) for voice-based symptom input in English, Hindi, and Hinglish.
+- Medical image upload for visual context analysis.
+- Safe AI-generated guidance with next steps and warning signs.
+- TTS (Text-to-Speech) for spoken responses in Hindi or English.
 
 ## Tech Stack
 
